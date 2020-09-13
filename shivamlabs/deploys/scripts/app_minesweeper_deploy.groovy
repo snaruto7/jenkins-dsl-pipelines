@@ -5,7 +5,6 @@ pipeline {
     environment {
         imageName = "minesweeper"
         codeRepo = "https://github.com/snaruto7/minesweeper.git"
-        version = VersionNumber([versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_DAY}.MINESWEEPER.${BUILDS_ALL_TIME}', projectStartDate: '2020-04-01'])
         branch = "master"
         registrySecret = "docker-secret"
     }

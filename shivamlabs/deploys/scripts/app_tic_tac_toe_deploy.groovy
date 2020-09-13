@@ -5,7 +5,6 @@ pipeline {
     environment {
         imageName = "tic-tac-toe"
         codeRepo = "https://github.com/snaruto7/tic-tac-toe.git"
-        version = VersionNumber([versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_DAY}.TIC-TAC-TOE.${BUILDS_ALL_TIME}', projectStartDate: '2020-04-01'])
         branch = "master"
         registrySecret = "docker-secret"
     }
