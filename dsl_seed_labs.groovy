@@ -16,7 +16,7 @@ job('dsl_seed_apps') {
     }
     steps {
         dsl {
-            external('./applications/dsl_seeds_app.groovy')
+            external('./shivamlabs/dsl_seeds_app.groovy')
             removeAction('DELETE')
             removeViewAction('DELETE')
             additionalClasspath('**/tools/*.groovy')
