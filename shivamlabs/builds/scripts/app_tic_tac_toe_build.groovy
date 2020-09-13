@@ -45,6 +45,7 @@ pipeline {
         stage('Docker Push'){
             steps{
                 sh '''
+                    set +x
                     docker login $registry -u $(cat username.json) --password $(cat password.json)
 
                     docker tag $imageName:$version $registry/$imageName:$version

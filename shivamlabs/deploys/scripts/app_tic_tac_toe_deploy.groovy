@@ -37,13 +37,14 @@ pipeline {
         }
         stage('Create Registry Secret'){
             steps{
-                sh """
+                sh '''
+                    set +x
                     if kubectl --kubeconfig=${WORKSPACE}/kube-config describe secret ${registrySecret}
                     then
                     kubectl --kubeconfig=${WORKSPACE}/kube-config delete secret ${registrySecret}
                     fi
                     kubectl --kubeconfig=${WORKSPACE}/kube-config create secret docker-registry ${registrySecret} --docker-server=$registry --docker-username=$(cat username.json) --docker-password=$(cat password.json) --docker-email=shivam.narula7@gmail.com
-                """
+                '''
             }
         }
         stage('Deploy Application'){
