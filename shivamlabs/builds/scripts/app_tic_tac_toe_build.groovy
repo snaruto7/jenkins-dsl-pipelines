@@ -63,7 +63,7 @@ pipeline {
     post{
         always{
             script {
-                BUILD_USER = getBuildUser()
+                BUILD_USER = buildUser()
             }
             slackSend channel: '#apps-dsl-build', 
             color: COLOR_MAP[currentBuild.currentResult],
