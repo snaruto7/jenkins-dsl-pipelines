@@ -3,11 +3,11 @@ def STATUS = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', 'ABO
 pipeline {
     agent { label 'master' }
     environment {
+        imageFolder = "shivamlabs"
         imageName = "tic-tac-toe"
         codeRepo = "https://github.com/snaruto7/tic-tac-toe.git"
         version = VersionNumber([versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_DAY}.TIC-TAC-TOE.${BUILDS_ALL_TIME}', projectStartDate: '2020-04-01'])
         branch = "master"
-        registry = "kubepractice.azurecr.io"
     }
     stages {
         stage('SCM'){
@@ -48,7 +48,7 @@ pipeline {
                     set +x
                     docker login $registry -u $(cat username.json) --password $(cat password.json)
 
-                    docker tag $imageName:$version $registry/$imageName:$version
+                    docker tag $imageName:$version $registry/$imageFolder/$imageName:$version
                     docker push $registry/$imageName:$version
                     docker rmi -f $registry/$imageName:$version
                 '''

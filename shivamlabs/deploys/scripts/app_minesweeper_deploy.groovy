@@ -42,7 +42,7 @@ pipeline {
                     then
                     kubectl --kubeconfig=${WORKSPACE}/kube-config delete secret ${registrySecret}
                     fi
-                    kubectl --kubeconfig=${WORKSPACE}/kube-config create secret docker-registry ${registrySecret} --docker-server=$registry --docker-username=$(cat username.json) --docker-password=$(cat password.json) --docker-email=shivam.narula7@gmail.com
+                    kubectl --kubeconfig=${WORKSPACE}/kube-config create secret docker-registry ${registrySecret} --docker-server=$registry --docker-username=$(cat username.json) --docker-password=$(cat password.json) --docker-email=shivam.snaruto7@gmail.com
                 '''
             }
         }

@@ -7,7 +7,6 @@ pipeline {
         codeRepo = "https://github.com/snaruto7/minesweeper.git"
         version = VersionNumber([versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_DAY}.MINESWEEPER.${BUILDS_ALL_TIME}', projectStartDate: '2020-04-01'])
         branch = "master"
-        registry = "kubepractice.azurecr.io"
     }
     stages {
         stage('SCM'){
@@ -48,7 +47,7 @@ pipeline {
                     set +x
                     docker login $registry -u $(cat username.json) --password $(cat password.json)
 
-                    docker tag $imageName:$version $registry/$imageName:$version
+                    docker tag $imageName:$version $registry/$imageFolder/$imageName:$version
                     docker push $registry/$imageName:$version
                     docker rmi -f $registry/$imageName:$version
                 '''

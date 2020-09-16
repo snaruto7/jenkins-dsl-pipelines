@@ -13,6 +13,9 @@ mapApps.collect { map ->
         properties {
             githubProjectUrl("${map.value.github}")
         }
+        environmentVariables {
+            env('registry', "shivamlabs.jfrog.io")
+        }
         definition {
             cps {
                 script(readFileFromWorkspace("./${map.value.teamId.toLowerCase()}/builds/scripts/${map.value.scriptName.toLowerCase()}.groovy"))
