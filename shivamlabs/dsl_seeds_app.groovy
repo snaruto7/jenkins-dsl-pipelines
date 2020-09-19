@@ -9,7 +9,7 @@ job('dsl_seed_app_builds') {
         }
     }
     triggers {
-        upstream('dsl_seed_labs', 'UNSTABLE')
+        upstream('dsl_seed_apps', 'UNSTABLE')
     }
     wrappers {
         preBuildCleanup()
@@ -35,7 +35,7 @@ job('dsl_seed_app_deploys') {
         }
     }
     triggers {
-        upstream('dsl_seed_labs', 'UNSTABLE')
+        upstream('dsl_seed_apps', 'UNSTABLE')
     }
     wrappers {
         preBuildCleanup()
@@ -60,7 +60,7 @@ job('dsl_seed_app_views') {
         }
     }
     triggers {
-        upstream('dsl_seed_labs', 'UNSTABLE')
+        upstream('dsl_seed_apps', 'UNSTABLE')
     }
     wrappers {
         preBuildCleanup()
