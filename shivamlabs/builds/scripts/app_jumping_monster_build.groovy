@@ -49,8 +49,8 @@ pipeline {
                     docker login $registry -u $(cat username.json) --password $(cat password.json)
 
                     docker tag $imageName:$version $registry/$imageFolder/$imageName:$version
-                    docker push $registry/$imageName:$version
-                    docker rmi -f $registry/$imageName:$version
+                    docker push $registry/$imageFolder/$imageName:$version
+                    docker rmi -f $registry/$imageFolder/$imageName:$version
                 '''
             }
         }
