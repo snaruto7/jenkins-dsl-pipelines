@@ -10,6 +10,7 @@ mapJenkinsJobs.collect { map ->
         logRotator {
             numToKeep(15)
         }
+        
         configure {
             project->
                 project / 'properties' << 'hudson.model.ParametersDefintionProperty' {
@@ -27,7 +28,7 @@ mapJenkinsJobs.collect { map ->
                         }
                     }
                 }
-                
+
         }
         environmentVariables {
             env('VAULT_ROLE_ID', "VAULT_ROLE_ID")
