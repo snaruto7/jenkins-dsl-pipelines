@@ -27,6 +27,7 @@ mapJenkinsJobs.collect { map ->
                         }
                     }
                 }
+                
         }
         environmentVariables {
             env('VAULT_ROLE_ID', "VAULT_ROLE_ID")
