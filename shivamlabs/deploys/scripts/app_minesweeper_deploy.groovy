@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Get Kubernetes Details'){
             environment{
-                VAULT_ADDR = "http://40.65.202.70:8200"
+                VAULT_ADDR = "http://40.70.214.80:8200"
             }
             steps{
                 withCredentials([string(credentialsId: "${VAULT_ROLE_ID}", variable: "ROLE_ID"), string(credentialsId: "${VAULT_SEC_ID}", variable: "SEC_ID")]) {
