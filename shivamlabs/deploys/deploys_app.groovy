@@ -22,7 +22,7 @@ mapJenkinsJobs.collect { map ->
                             visibleItemCount '15'
                             type 'PT_SINGLE_SELECT'
                             groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_jfrog.groovy'))
-                            bindings("docker_image=${map.value.artifactFolder}/${map.value.artifactName}")
+                            bindings("docker_folder=${map.value.artifactFolder}\ndocker_image=${map.value.artifactName}")
                             multiSelectDelimiter ','
                             projectName "${jobName}"
                         }

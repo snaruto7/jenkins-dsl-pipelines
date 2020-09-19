@@ -23,7 +23,7 @@ try {
     }
 
     List<String> artifacts = new ArrayList<String>()
-    def connection = new URL("https://shivamlabs.jfrog.io/artifactory/api/docker/${docker_image}/tags/list").openConnection() as HttpURLConnection
+    def connection = new URL("https://shivamlabs.jfrog.io/artifactory/api/docker/${docker_folder}/v2/${docker_image}/tags/list").openConnection() as HttpURLConnection
     connection.setRequestMethod("GET")
 
     connection.setRequestProperty( 'X-JFrog-Art-Api', ('' + authTOKEN.toString() + ''))
