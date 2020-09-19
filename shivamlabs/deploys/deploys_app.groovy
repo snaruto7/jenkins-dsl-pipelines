@@ -20,7 +20,7 @@ mapJenkinsJobs.collect { map ->
                             qouteValue 'false'
                             saveJSONParameterToFile 'false'
                             visibleItemCount '15'
-                            type 'PI_SINGLE_SELECT'
+                            type 'PT_SINGLE_SELECT'
                             groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_jfrog.groovy'))
                             bindings("docker_image=${map.value.artifactFolder}/${map.value.artifactName}")
                             multiSelectDelimeter ','
