@@ -15,7 +15,7 @@ mapJenkinsJobs.collect { map ->
             project->
                 project / 'properties' << 'hudson.model.ParametersDefinitionProperty' {
                     parameterDefinitions {
-                        'com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefintion' {
+                        'com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition' {
                             name 'version'
                             qouteValue 'false'
                             saveJSONParameterToFile 'false'
