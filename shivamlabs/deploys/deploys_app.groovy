@@ -1,7 +1,7 @@
 def mapJenkinsJobs = [
-    1: [teamID: "ShivamLabs", buildName: "tic_tac_toe", scriptName: "app_tic_tac_toe_deploy", artifactName: "tic-tac-toe" ],
-    2: [teamID: "ShivamLabs", buildName: "minesweeper", scriptName: "app_minesweeper_deploy", artifactName: "minesweeper" ],
-    3: [teamID: "ShivamLabs", buildName: "jumping_monster", scriptName: "app_jumping_monster_deploy", artifactName: "jumping-monster" ],
+    1: [teamID: "ShivamLabs", buildName: "tic_tac_toe", artifactFolder: "shivamlabs", scriptName: "app_tic_tac_toe_deploy", artifactName: "tic-tac-toe" ],
+    2: [teamID: "ShivamLabs", buildName: "minesweeper", artifactFolder: "shivamlabs", scriptName: "app_minesweeper_deploy", artifactName: "minesweeper" ],
+    3: [teamID: "ShivamLabs", buildName: "jumping_monster", artifactFolder: "shivamlabs", scriptName: "app_jumping_monster_deploy", artifactName: "jumping-monster" ],
 ]
 
 mapJenkinsJobs.collect { map ->
@@ -20,7 +20,8 @@ mapJenkinsJobs.collect { map ->
                             saveJSONParameterToFile 'false'
                             visibleItemCount '15'
                             type 'PI_SINGLE_SELECT'
-                            bindings("docker_image=${map.value.artifactName}")
+                            groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_jfrog.groovy'))
+                            bindings("docker_image=${map.value.artifactFolder}/${map.value.artifactName}")
                             multiSelectDelimeter ','
                             projectName "${$jobName}"
                         }
