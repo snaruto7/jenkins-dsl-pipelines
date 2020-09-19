@@ -13,7 +13,7 @@ mapJenkinsJobs.collect { map ->
 
         configure {
             project->
-                project / 'properties' << 'hudson.model.ParametersDefintionProperty' {
+                project / 'properties' << 'hudson.model.ParametersDefinitionProperty' {
                     parameterDefinitions {
                         'com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefintion' {
                             name 'version'
