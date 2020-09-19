@@ -35,7 +35,7 @@ try {
         }
 
         def item = json
-        items.tags.each { f -> 
+        item.tags.each { f -> 
             println "${f}"
             artifacts.add(f)
         }
