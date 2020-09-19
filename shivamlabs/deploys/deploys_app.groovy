@@ -17,13 +17,13 @@ mapJenkinsJobs.collect { map ->
                     parameterDefinitions {
                         'com.cwctravel.hudson.plugins.extended__choice__parameter.ExtendedChoiceParameterDefinition' {
                             name 'version'
-                            qouteValue 'false'
+                            quoteValue 'false'
                             saveJSONParameterToFile 'false'
                             visibleItemCount '15'
                             type 'PT_SINGLE_SELECT'
                             groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_jfrog.groovy'))
                             bindings("docker_image=${map.value.artifactFolder}/${map.value.artifactName}")
-                            multiSelectDelimeter ','
+                            multiSelectDelimiter ','
                             projectName "${jobName}"
                         }
                     }
