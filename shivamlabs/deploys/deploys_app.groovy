@@ -33,7 +33,8 @@ mapJenkinsJobs.collect { map ->
         environmentVariables {
             env('VAULT_ROLE_ID', "VAULT_ROLE_ID")
             env('VAULT_SEC_ID', "VAULT_SEC_ID")
-            env('registry', 'kubepractice.azurecr.io')
+            env('registry', "shivamlabs.jfrog.io")
+            env('imageFolder', "${map.value.artifactFolder}")
         }
         definition {
             cps {
