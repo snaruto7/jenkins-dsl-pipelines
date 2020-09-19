@@ -7,6 +7,7 @@ pipeline {
         codeRepo = "https://github.com/snaruto7/jumping-monster.git"
         version = VersionNumber([versionNumberString: '${BUILD_YEAR}.${BUILD_MONTH}.${BUILD_DAY}.JUMPING-MONSTER.${BUILDS_ALL_TIME}', projectStartDate: '2020-04-01'])
         branch = "master"
+        imageFolder = "shivamlabs"
     }
     stages {
         stage('SCM'){
