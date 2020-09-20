@@ -24,7 +24,7 @@ mapApps.collect { map ->
         }
     }
 
-    pipelineJob("${map.value.teamId}_App_${map.value.appId}_Build_Webhook") {
+    job("${map.value.teamId}_App_${map.value.appId}_Build_Webhook") {
         logRotator {
             numToKeep(15)
         }
