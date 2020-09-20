@@ -11,6 +11,7 @@ pipeline {
         stage('Pull From Jfrog'){
             steps{
                 script{
+                    cleanWs()
                     withCredentials([usernamePassword(credentialsId: 'artifactory-jfrog', passwordVariable: 'docker_pw', usernameVariable: 'docker_user')]) {
                         sh """
                             curl -H 'X-JFrog-Art-Api:$docker_pw' -X GET -G $sourceURL -o project_artifacts.zip
