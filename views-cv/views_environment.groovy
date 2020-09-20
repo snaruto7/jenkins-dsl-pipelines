@@ -3,9 +3,9 @@ categorizedJobsView('Environment Overview') {
         regex(/.*/)
     }
     categorizationCriteria {
-        regexGroupRule(/dsl_*.*/, "Jenkins Job DSL")
-        regexGroupRule(/ShivamLabs_App_*.*/, "Application Jobs")
-        regexGroupRule(/ShivamLabs_Terraform_*.*/, "Terraform Jobs")
+        regexGroupingRule(/dsl_*.*/, "Jenkins Job DSL")
+        regexGroupingRule(/ShivamLabs_App_*.*/, "Application Jobs")
+        regexGroupingRule(/ShivamLabs_Terraform_*.*/, "Terraform Jobs")
     }
     columns {
         status()
