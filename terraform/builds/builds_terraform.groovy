@@ -9,7 +9,7 @@ mapApps.collect { map ->
             numToKeep(15)
         }
         properties {
-            githubProjecUrl("${map.value.github}")
+            githubProjectUrl("${map.value.github}")
         }
         parameters {
             choiceParam( name: 'subscription_id', choices: ['shivam-subs'], description: 'Select the subscription')
