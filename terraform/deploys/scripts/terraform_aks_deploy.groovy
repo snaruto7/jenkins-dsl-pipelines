@@ -4,7 +4,7 @@ pipeline {
     agent { label 'master' }
     environment {
         imageName = "aks"
-        targetPath = "${imageName}/project_space.${version}.zip"
+        targetPath = "${imageName}/project_artifacts.${version}.zip"
         sourceURl = "https://shivamlabs.jfrog.io/artifactory/${imageFolder}/${targetPath}"
     }
     stages {
