@@ -1,5 +1,5 @@
 def mapApps = [
-    1. [teamId: "ShivamLabs", appId: "aks", scriptName: "terraform_aks_build", github: "https://github.com/snaruto7/terraform-aks-setup.git", primaryBranch: "master", primaryFolder: "", primaryFolderExec: ""],
+    1: [teamId: "ShivamLabs", appId: "aks", scriptName: "terraform_aks_build", github: "https://github.com/snaruto7/terraform-aks-setup.git", primaryBranch: "master", primaryFolder: "", primaryFolderExec: ""],
 ]
 
 mapApps.collect { map ->
