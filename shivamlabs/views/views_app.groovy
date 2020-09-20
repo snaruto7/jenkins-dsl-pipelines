@@ -2,7 +2,7 @@ nestedView('Applications'){
     views {
         listView('Applications Overview') {
             jobs {
-                regex(/ShivamLabs_*.*/)
+                regex(/ShivamLabs_App_*.*/)
             }
             columns {
                 status()
@@ -14,7 +14,7 @@ nestedView('Applications'){
         }// end list view
         listView('Applications Builds') {
             jobs {
-                regex(/ShivamLabs_*.*_Build/)
+                regex(/ShivamLabs_App_*.*_Build/)
             }
             columns {
                 status()
@@ -26,7 +26,7 @@ nestedView('Applications'){
         }//end list view
         listView('Applications Deploys') {
             jobs {
-                regex(/ShivamLabs_*.*_Deploy/)
+                regex(/ShivamLabs_App_*.*_Deploy/)
             }
             columns {
                 status()

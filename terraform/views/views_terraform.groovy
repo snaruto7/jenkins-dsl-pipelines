@@ -2,7 +2,7 @@ nestedView('Terraform'){
     views {
         listView('Terraform Overview') {
             jobs {
-                regex(/Terraform_*.*/)
+                regex(/ShivamLabs_Terraform_*.*/)
             }
             columns {
                 status()
@@ -14,7 +14,7 @@ nestedView('Terraform'){
         }// end list view
         listView('Terraform Builds') {
             jobs {
-                regex(/Terraform_*.*_Build/)
+                regex(/ShivamLabs_Terraform_*.*_Build/)
             }
             columns {
                 status()
@@ -26,7 +26,7 @@ nestedView('Terraform'){
         }//end list view
         listView('Terraform Deploys') {
             jobs {
-                regex(/Terraform_*.*_Deploy/)
+                regex(/ShivamLabs_Terraform_*.*_Deploy/)
             }
             columns {
                 status()
