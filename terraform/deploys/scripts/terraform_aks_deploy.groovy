@@ -26,6 +26,13 @@ pipeline {
                 '''
             }
         }
+        stage('Initialize Terraform'){
+            steps{
+                dir('terraform'){
+                    sh 'terraform init'
+                }
+            }
+        }
         stage('Plan Infra'){
             steps {
                 dir('terraform'){
