@@ -1,4 +1,4 @@
-job('dsl_seed_apps') {
+job('dsl_seed_terraform_builds') {
     scm {
         git {
             remote {
@@ -9,22 +9,21 @@ job('dsl_seed_apps') {
         }
     }
     triggers {
-        upstream('dsl_meta_seed', 'UNSTABLE')
+        upstream('dsl_seed_tf', 'UNSTABLE')
     }
     wrappers {
         preBuildCleanup()
     }
     steps {
         dsl {
-            external('./shivamlabs/dsl_seeds_app.groovy')
+            external('./terraform/builds/builds_*.groovy')
             removeAction('DELETE')
             removeViewAction('DELETE')
-            additionalClasspath('**/tools/*.groovy')
         }
     }
 }
 
-job('dsl_seed_tf') {
+job('dsl_seed_terraform_deploys') {
     scm {
         git {
             remote {
@@ -35,17 +34,41 @@ job('dsl_seed_tf') {
         }
     }
     triggers {
-        upstream('dsl_meta_seed', 'UNSTABLE')
+        upstream('dsl_seed_tf', 'UNSTABLE')
     }
     wrappers {
         preBuildCleanup()
     }
     steps {
         dsl {
-            external('./terraform/dsl_seeds_terraform.groovy')
+            external('./terraform/deploys/deploys_*.groovy')
             removeAction('DELETE')
             removeViewAction('DELETE')
-            additionalClasspath('**/tools/*.groovy')
+        }
+    }
+}
+
+job('dsl_seed_terraform_views') {
+    scm {
+        git {
+            remote {
+                url('https://github.com/snaruto7/jenkins-dsl-pipelines.git')
+                credentials('github-creds')
+            }
+            branches('*/master')
+        }
+    }
+    triggers {
+        upstream('dsl_seed_tf', 'UNSTABLE')
+    }
+    wrappers {
+        preBuildCleanup()
+    }
+    steps {
+        dsl {
+            external('./terraform/views/views_*.groovy')
+            removeAction('DELETE')
+            removeViewAction('DELETE')
         }
     }
 }

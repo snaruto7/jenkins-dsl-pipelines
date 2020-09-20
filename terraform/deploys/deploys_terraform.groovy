@@ -1,12 +1,10 @@
 def mapJenkinsJobs = [
-    1: [teamID: "ShivamLabs", buildName: "tic_tac_toe", artifactFolder: "shivamlabs", scriptName: "app_tic_tac_toe_deploy", artifactName: "tic-tac-toe" ],
-    2: [teamID: "ShivamLabs", buildName: "minesweeper", artifactFolder: "shivamlabs", scriptName: "app_minesweeper_deploy", artifactName: "minesweeper" ],
-    3: [teamID: "ShivamLabs", buildName: "jumping_monster", artifactFolder: "shivamlabs", scriptName: "app_jumping_monster_deploy", artifactName: "jumping-monster" ],
+    1: [teamID: "ShivamLabs", buildName: "aks", artifactFolder: "shivamlabs-terraform", scriptName: "terraform_aks_deploy", artifactName: "aks" ],
 ]
 
 mapJenkinsJobs.collect { map ->
 
-    pipelineJob("${map.value.teamID}_App_${map.value.buildName}_Deploy") {
+    pipelineJob("${map.value.teamID}_Terraform_${map.value.buildName}_Deploy") {
         logRotator {
             numToKeep(15)
         }
@@ -21,8 +19,8 @@ mapJenkinsJobs.collect { map ->
                             saveJSONParameterToFile 'false'
                             visibleItemCount '15'
                             type 'PT_SINGLE_SELECT'
-                            groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_docker.groovy'))
-                            bindings("docker_folder=${map.value.artifactFolder}\ndocker_image=${map.value.artifactName}")
+                            groovyScript(readFileFromWorkspace('./scripts/artifactory_pull_generic.groovy'))
+                            bindings("artifactName=${map.value.artifactName}\nrepository=${map.value.artifactFolder}")
                             multiSelectDelimiter ','
                             projectName "${jobName}"
                         }
@@ -38,7 +36,7 @@ mapJenkinsJobs.collect { map ->
         }
         definition {
             cps {
-                script(readFileFromWorkspace("./shivamlabs/deploys/scripts/${map.value.scriptName}.groovy"))
+                script(readFileFromWorkspace("./terraform/deploys/scripts/${map.value.scriptName}.groovy"))
                 sandbox()
             }
         }
