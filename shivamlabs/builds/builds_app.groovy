@@ -92,7 +92,7 @@ mapApps.collect { map ->
         }
         definition {
             cps {
-                script(readFileFromWorkspace("./${map.value.teamId}/builds/scripts/pull_requests/${map.value.scriptName.toLowerCase()}_pr.groovy"))
+                script(readFileFromWorkspace("./${map.value.teamId.toLowerCase()}/builds/scripts/pull_requests/${map.value.scriptName.toLowerCase()}_pr.groovy"))
             }
         }
     }
