@@ -57,4 +57,43 @@ mapApps.collect { map ->
             downstream("${map.value.teamId}_App_${map.value.appId}_Build", 'UNSTABLE')
         }
     } // end webhook job
+
+    pipelineJob("${map.value.teamId}_App_${map.value.appId}_Build_PR") {
+        logRotator {
+            numToKeep(15)
+        }
+        properties {
+            githubProjectUrl("${map.value.github}")
+        }
+        triggers {
+            githubPullRequest {
+
+                cron('H/5 * * * *')
+                triggerPhrase('')
+                useGithubHooks()
+                permitAll()
+                displayBuildErrorsOnDownstreamBuilds()
+                whiteListTargetBranches(["master", "develop"])
+                allowMembersOfWhitelistedOrgsAsAdmin()
+                extensions {
+                    commitStatus {
+                        context('Test')
+                        triggeredStatus('Starting')
+                        startedStatus('Build Started')
+                        addTestResults(true)
+                        statusUrl('${BUILD_URL}')
+                        completedStatus('SUCCESS', 'All is well')
+                        completedStatus('FAILURE', 'All is well')
+                        completedStatus('PENDING', 'All is well')
+                        completedStatus('ERROR', 'All is well')
+                    }
+                }
+            }
+        }
+        definition {
+            cps {
+                script(readFileFromWorkspace("./${map.value.teamId}/builds/scripts/pull_requests/${map.value.scriptName.toLowerCase()}_pr.groovy"))
+            }
+        }
+    }
 }
