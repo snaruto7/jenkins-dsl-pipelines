@@ -70,7 +70,7 @@ mapApps.collect { map ->
 
                 cron('H/5 * * * *')
                 triggerPhrase('')
-                useGithubHooks()
+                useGitHubHooks()
                 permitAll()
                 displayBuildErrorsOnDownstreamBuilds()
                 whiteListTargetBranches(["master", "develop"])
