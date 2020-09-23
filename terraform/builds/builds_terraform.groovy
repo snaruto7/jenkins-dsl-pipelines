@@ -20,7 +20,7 @@ mapApps.collect { map ->
             stringParam( 'node_count',  '3',  'Enter node count for AKS cluster')
             choiceParam( 'vm_size', [ 'Standard_DS1_v2','Standard_D2_v2', 'Standard_D2S_v2', 'Standard_B2s', 'Standard_B2ms'],  'Enter size for AKS nodes')
             stringParam( 'environment',  '',  'Add the type of environment')
-            choiceParam( 'Create', ['None'],  'Tf infa to be created or destroyed or none')
+            choiceParam( 'Create', ['None', 'True', 'False'],  'Tf infa to be created or destroyed or none')
         }
         definition {
             cps {

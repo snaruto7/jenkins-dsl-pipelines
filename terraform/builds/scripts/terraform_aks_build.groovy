@@ -66,10 +66,18 @@ pipeline {
                 }
             }
         }
+        stage('Store Config'){
+            steps{
+                sh '''
+                    echo $Create > config
+                '''
+            }
+        }
         stage('Zip the code'){
             steps{
                 sh '''
                     zip -r project_artifacts.zip terraform/ -x "*.git*"
+                    zip -r project_artifacts.zip config
                 '''
             }
         }

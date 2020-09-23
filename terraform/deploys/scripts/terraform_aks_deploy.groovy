@@ -27,6 +27,13 @@ pipeline {
                 '''
             }
         }
+        stage("Print value"){
+            steps{
+                sh '''
+                    cat config
+                '''
+            }
+        }
         stage('Initialize Terraform'){
             steps{
                 dir('terraform'){
