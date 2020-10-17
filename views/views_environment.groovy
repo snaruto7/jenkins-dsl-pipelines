@@ -14,7 +14,4 @@ categorizedJobsView('Environment Overview') {
         lastSuccess()
         lastFailure()
     }
-    configure { view ->
-        view / defaultView('Environment Overview')
-    }
 }
