@@ -11,8 +11,11 @@ mapApps.collect { map ->
         properties {
             githubProjectUrl("${map.value.github}")
         }
+        environmentVariables {
+            env('registry', "shivamlabs.jfrog.io")
+        }
         parameters {
-            choiceParam( 'image_name',  '[jenkins-slave]',  'Enter the image to be created')
+            choiceParam( 'image_name',  ['jenkins-slave'],  'Enter the image to be created')
             stringParam( 'tag',  '',  'Enter version of the image')
         }
         definition {
